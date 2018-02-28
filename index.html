@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<script>
+    function longestWord(sen)
+    {
+        const wordArray = sen.toLowerCase().match(/[a-z0-9]+/g);
+        //sort by length
+        const sorted = wordArray.sort(function (a, b) {
+            return b.length - a.length;
+        });
+        return sorted[0]
+    }
+    sen = 'Hello, my name is Joanna';
+
+    function arrayChunk(arr, len)
+    {
+        //initialize chunked array
+        const chunkedArray = [];
+        //Set index
+        let i = 0;
+        while(i < arr.length)
+        {
+            //slice out from the index to the index
+            chunkedArray.push(arr.slice(i, i+ len));
+            i += len;
+        }
+        return chunkedArray;
+    }
+    function flattenArray(arrays) {
+        return [].concat.apply([], (arrays));
+    }
+    function isAnagram(str1, str2) {
+        return formatStr(str1)  === formatStr(str2);
+    }
+    function formatStr(str)
+    {
+        return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+    }
+    function letterChange(str)
+    {
+        let newStr = str.replace(/[a-z]/gi, function (char){
+            if (char == 'z' || char == 'Z')
+            {
+                return 'a';
+            }
+            else
+            {
+                return String.fromCharCode(char.charCodeAt() + 1);
+            }
+        });
+    }
+    function reverseString(str)
+    {
+        const strArray = str.split('');
+        strArray.reverse();
+        return strArray.join('');
+    }
+    function isPalindrome(str)
+    {
+        const revString = str.split('').reverse().join('');
+
+        return revString === str;
+    }
+    function reverseInt(int)
+    {
+        const revString = int.toString().split('').reverse().join('');
+        return parseInt(revString);
+    }
+    function capitalizeLetters(str)
+    {
+        const stringArr = str.toLowerCase().split(' ');
+        
+        for (let i = 0; i < stringArr.length; i++)
+        {
+            stringArr[i] = stringArr[i].substring(0, 1).toUpperCase() + stringArr[i].substring(1);
+        }
+        return stringArr.join(' ');
+    }
+    console.log(capitalizeLetters('i love javascript'));
+</script>
+</body>
+</html>
+
